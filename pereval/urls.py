@@ -14,11 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
-from mounts.views import MountainPassAPIView
+from rest_framework import routers
+from mounts.views import UserViewSet, AreaViewSet, MountainPassViewSet
+
+router = routers.DefaultRouter()
+router.register('MountainPass', MountainPassViewSet)
+router.register(r'user', UserViewSet)
+router.register(r'area', AreaViewSet)
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/mountainpass_list', MountainPassAPIView.as_view()),
+    path('api/v1/', include(router.urls)),
 ]
