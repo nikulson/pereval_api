@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "phonenumber_field",
     'rest_framework',
+    'drf_yasg',
 
     'mounts.apps.MountsConfig',
 ]
@@ -120,6 +121,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
 
 # Static files (CSS, JavaScript, Images)

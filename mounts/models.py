@@ -8,9 +8,15 @@ class User(models.Model):
     email = models.EmailField(verbose_name="Электронная почта", null=False, blank=False)
     phoneNumber = PhoneNumberField(verbose_name="Номер телефона", unique=True, null=False, blank=False)
 
+    def __str__(self):
+        return f'{self.first_name, self.last_name}'
+
 
 class Area(models.Model):
     title = models.CharField(verbose_name="Горный Хребет", max_length=150)
+
+    def __str__(self):
+        return f'{self.title}'
 
 
 class MountainPass(models.Model):
@@ -43,3 +49,6 @@ class MountainPass(models.Model):
     summer = models.CharField(verbose_name="Уровень сложности летом", max_length=2, choices=LEVELS, blank=True)
     autumn = models.CharField(verbose_name="Уровень сложности осенью", max_length=2, choices=LEVELS, blank=True)
     spring = models.CharField(verbose_name="Уровень сложности весной", max_length=2, choices=LEVELS, blank=True)
+
+    def __str__(self):
+        return f'{self.title}'
